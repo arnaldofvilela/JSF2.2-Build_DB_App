@@ -11,7 +11,6 @@ public class StudentTwo {
 	private String firstName;
 	private String lastName;
 	private String country;
-	
 	// list of countries for the drop-down list
 	List<String> countryOptions;
 	
