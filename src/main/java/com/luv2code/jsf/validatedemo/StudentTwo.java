@@ -3,18 +3,18 @@ package com.luv2code.jsf.validatedemo;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class StudentOne {
+public class StudentTwo {
 
 	private String firstName;
 	private String lastName;
-	private String email;
+	private String postalCode;
+	private int freePasses;
 	
 	// create no-arg constructor
-	public StudentOne() {
+	public StudentTwo() {
 		
 	}
 
-	// define getter/setter methods
 	public String getFirstName() {
 		return firstName;
 	}
@@ -31,13 +31,27 @@ public class StudentOne {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
-	
-	
+
+	public int getFreePasses() {
+		return freePasses;
+	}
+
+	public void setFreePasses(int freePasses) {
+		this.freePasses = freePasses;
+	}
+
 }
+
+
+
+
+
+
+
