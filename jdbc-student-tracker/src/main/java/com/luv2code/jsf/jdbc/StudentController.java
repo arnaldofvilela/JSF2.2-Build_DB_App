@@ -27,13 +27,13 @@ public class StudentController {
 	public List<Student> getStudents() {
 		return students;
 	}
-	
+
 	public void loadStudents() {
-		
+
 		logger.info("Loading students");
 		
 		students.clear();
-		
+
 		try {
 			
 			// get all students from database
@@ -47,7 +47,29 @@ public class StudentController {
 			addErrorMessage(exc);
 		}
 	}
-	
+		
+	public String addStudent(Student theStudent) {
+
+		logger.info("Adding student: " + theStudent);
+
+		try {
+			
+			// add student to the database
+			studentDbUtil.addStudent(theStudent);
+			
+		} catch (Exception exc) {
+			// send this to server logs
+			logger.log(Level.SEVERE, "Error adding students", exc);
+			
+			// add error message for JSF page
+			addErrorMessage(exc);
+
+			return null;
+		}
+		
+		return "list-students?faces-redirect=true";
+	}
+		
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
