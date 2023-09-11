@@ -71,7 +71,12 @@
 						<!-- the value for each row -->
 						<h:commandLink value="Update" 
 							action="#{studentController.loadStudent(tempStudent.id)}" />
+						|
 						
+						<h:commandLink value="Delete"
+							onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
+							action="#{studentController.deleteStudent(tempStudent.id)}" />
+							
 					</h:column>
 				
 				</h:dataTable>

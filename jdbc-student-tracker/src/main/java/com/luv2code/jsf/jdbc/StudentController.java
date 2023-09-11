@@ -122,9 +122,59 @@ public class StudentController {
 		return "list-students?faces-redirect=true";
 	}
 	
+	public String deleteStudent(int studentId) {
+		
+		logger.info("Deleting student id: " + studentId);
+		
+		try {
+			
+			//delete the student from the database
+			studentDbUtil.deleteStudent(studentId);
+			
+		} catch (Exception exc) {
+			// send this to server logs
+			logger.log(Level.SEVERE, "Error deleting student id: " + studentId, exc);
+			
+			// add error message for JSF page
+			addErrorMessage(exc);
+			
+			return null;
+		}
+		
+		return "list-students";
+	}
+	
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
